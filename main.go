@@ -47,7 +47,7 @@ func NewLoadBalancer(servers []*SimpleServer) *LoadBalancer {
 	}
 }
 
-// --It will be give me the next available server
+// --It will  give me the next available server
 func (lb *LoadBalancer) getNextServer() *SimpleServer {
 	index := atomic.AddUint32(&lb.roundRobinIndex, 1) - 1
 	return lb.servers[index%uint32(len(lb.servers))]
